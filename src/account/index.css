@@ -1,0 +1,9 @@
+@import url(../login/assets/fonts/geist/index.css);
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.kcBodyClass {
+    @apply bg-gray-50 font-geist;
+}
