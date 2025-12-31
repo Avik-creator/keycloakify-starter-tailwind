@@ -1,17 +1,13 @@
-import type { JSX } from "react";
 import { useState, useLayoutEffect } from "react";
-import type { LazyOrNot } from "keycloakify/tools/LazyOrNot";
 import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import { getKcClsx, type KcClsx } from "keycloakify/login/lib/kcClsx";
-import type { UserProfileFormFieldsProps } from "keycloakify/login/UserProfileFormFieldsProps";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
-import { UserProfileFormFieldsCustom } from "../UserProfileFormFieldsCustom";
+import { UserProfileFormFieldsCustom } from "./UserProfileFormFieldsCustom";
 import logo from "../assets/img/log.avif";
 
 type RegisterProps = PageProps<Extract<KcContext, { pageId: "register.ftl" }>, I18n> & {
-    UserProfileFormFields: LazyOrNot<(props: UserProfileFormFieldsProps) => JSX.Element>;
     doMakeUserConfirmPassword: boolean;
 };
 
@@ -67,7 +63,7 @@ export default function Register(props: RegisterProps) {
             infoNode={
                 <div className="mt-8 text-center">
                     <span className="text-gray-600">
-                        {msg("backToLogin")}{" "}
+                        Already have an account?{" "}
                         <a href={url.loginUrl} className="font-semibold text-orange-600 hover:text-orange-700">
                             {msg("doLogIn")}
                         </a>

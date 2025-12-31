@@ -2,6 +2,7 @@ import { kcSanitize } from "keycloakify/lib/kcSanitize";
 import type { PageProps } from "keycloakify/login/pages/PageProps";
 import type { KcContext } from "../KcContext";
 import type { I18n } from "../i18n";
+import logo from "../assets/img/log.avif";
 
 export default function LoginResetPassword(props: PageProps<Extract<KcContext, { pageId: "login-reset-password.ftl" }>, I18n>) {
     const { kcContext, i18n, doUseDefaultCss, Template, classes } = props;
@@ -20,8 +21,12 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
             displayMessage={true}
             infoNode={<p className="text-gray-600">{realm.duplicateEmailsAllowed ? msg("emailInstructionUsername") : msg("emailInstruction")}</p>}
             headerNode={
-                <div className="space-y-2">
-                    <h1 className="text-4xl font-bold text-gray-900">{msg("emailForgotTitle")}</h1>
+                <div className="flex flex-col items-center space-y-4">
+                    {/* Logo */}
+                    <img src={logo} alt="Logo" className="h-8 w-auto mb-4" />
+                    <div className="space-y-2 text-center">
+                        <h1 className="text-4xl font-bold text-gray-900">{msg("emailForgotTitle")}</h1>
+                    </div>
                 </div>
             }
         >
@@ -83,7 +88,7 @@ export default function LoginResetPassword(props: PageProps<Extract<KcContext, {
                             href={url.loginUrl}
                             className="text-sm text-orange-600 hover:text-orange-700 hover:underline transition-colors font-medium"
                         >
-                            &laquo; {msg("backToLogin")}
+                            ← Back to login
                         </a>
                     </div>
 

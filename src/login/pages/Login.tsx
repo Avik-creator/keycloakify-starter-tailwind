@@ -38,7 +38,7 @@ export default function Login(props: PageProps<Extract<KcContext, { pageId: "log
                     <img src={logo} alt="Logo" className="h-8 w-auto mb-4" />
                     <div className="space-y-2 text-center">
                         <h1 className="text-4xl font-bold text-gray-900">{msg("loginAccountTitle")}</h1>
-                        <p className="text-lg text-gray-500">{msg("loginTotpStep2")}</p>
+                        <p className="text-lg text-gray-500">Sign in to continue to your account</p>
                     </div>
                 </div>
             }

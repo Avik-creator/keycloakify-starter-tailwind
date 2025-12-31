@@ -212,7 +212,30 @@ export const WithoutPasswordField: Story = {
     render: () => (
         <KcPageStory
             kcContext={{
-                realm: { password: false }
+                realm: { password: false },
+                social: {
+                    displayInfo: true,
+                    providers: [
+                        {
+                            loginUrl: "google",
+                            alias: "google",
+                            providerId: "google",
+                            displayName: "Google",
+                            iconClasses: "fa fa-google"
+                        },
+                        {
+                            loginUrl: "microsoft",
+                            alias: "microsoft",
+                            providerId: "microsoft",
+                            displayName: "Microsoft",
+                            iconClasses: "fa fa-windows"
+                        }
+                    ]
+                },
+                message: {
+                    type: "info",
+                    summary: "Please sign in using one of the available methods below."
+                }
             }}
         />
     )

@@ -91,13 +91,21 @@ export const WithValidationError: Story = {
                 messagesPerField: {
                     existsError: (fieldName: string, ...otherFieldNames: string[]) => {
                         const fieldNames = [fieldName, ...otherFieldNames];
-                        return fieldNames.includes("global");
+                        return (
+                            fieldNames.includes("username") ||
+                            fieldNames.includes("email") ||
+                            fieldNames.includes("firstName") ||
+                            fieldNames.includes("lastName")
+                        );
                     },
                     get: (fieldName: string) => {
-                        if (fieldName === "global") {
-                            return "Registration is currently disabled";
-                        }
-                        return "";
+                        const errors: Record<string, string> = {
+                            username: "Username is required",
+                            email: "Email must be a valid email address",
+                            firstName: "First name is required",
+                            lastName: "Last name is required"
+                        };
+                        return errors[fieldName] || "";
                     }
                 }
             }}
@@ -116,9 +124,28 @@ export const WithEmailAsUsername: Story = {
 };
 
 export const WithPasswordReset: Story = {
-    render: () => <KcPageStory />
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                message: {
+                    type: "info",
+                    summary: "Password reset link has been sent to your email. Check your inbox to reset your password."
+                }
+            }}
+        />
+    )
 };
 
 export const WithoutPasswordField: Story = {
-    render: () => <KcPageStory />
+    render: () => (
+        <KcPageStory
+            kcContext={{
+                passwordRequired: false,
+                message: {
+                    type: "info",
+                    summary: "A password will be provided to you via email."
+                }
+            }}
+        />
+    )
 };
